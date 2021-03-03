@@ -25,7 +25,7 @@ public class Player : MonoBehaviour
     public GameObject arms;
     public PlayerSword playerSword;
     public Shockwave shockwave;
-    public float health = 100f;
+    public float health;
 
     Vector3 velocity;
     bool isGrounded = true;
@@ -36,6 +36,7 @@ public class Player : MonoBehaviour
     bool attackColliding = false;
     String state = "idle";
     InputActionAsset playerInput;
+    HashSet<Collider> damagedEnemies = new HashSet<Collider>();
 
 
     public bool activeCam = true;
@@ -52,6 +53,7 @@ public class Player : MonoBehaviour
         if (Application.platform != RuntimePlatform.LinuxEditor &&
             Application.platform != RuntimePlatform.LinuxPlayer) {
             Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
         }
 
         if (!activeCam) {
@@ -122,11 +124,13 @@ public class Player : MonoBehaviour
         InputAction secondaryAction = playerInput.FindActionMap("Player").FindAction("SecondaryAttack");
         InputAction tertiaryAction  = playerInput.FindActionMap("Player").FindAction("TertiaryAttack");
         InputAction jumpAction      = playerInput.FindActionMap("Player").FindAction("Jump");
+        InputAction resetAction     = playerInput.FindActionMap("Player").FindAction("Reset");
 
         bool primaryAttack   = primaryAction.phase == InputActionPhase.Started;
         bool secondaryAttack = secondaryAction.phase == InputActionPhase.Started;
         bool tertiaryAttack  = tertiaryAction.phase == InputActionPhase.Started;
         bool jump            = jumpAction.phase == InputActionPhase.Started;
+        bool reset           = resetAction.phase == InputActionPhase.Started;
 
         if (primaryAttack) {
             if (secondaryAttack) { // if true, we're using telekinesis
@@ -155,6 +159,11 @@ public class Player : MonoBehaviour
         if (jump && isGrounded)
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+        }
+
+        if (reset)
+        {
+            SceneManager.LoadScene("Scenes/Main");
         }
     }
 
@@ -204,8 +213,8 @@ public class Player : MonoBehaviour
 
     void MouseLook(float x, float y) {
         float deltaFactor = GetDeltaFactor(Time.deltaTime);
-        float mouseX = x * (mouseSensitivity / 1f) * deltaFactor;
-        float mouseY = y * (mouseSensitivity / 1f) * deltaFactor;
+        float mouseX = x * (mouseSensitivity / 100f) * deltaFactor;
+        float mouseY = y * (mouseSensitivity / 100f) * deltaFactor;
 
         xRotation -= mouseY;
         xRotation = Mathf.Clamp(xRotation, -70, 70f);
@@ -218,30 +227,22 @@ public class Player : MonoBehaviour
 
     void CheckAttackCollision()
     {
-        if (playerSword.hits.Length > 0 && !attackColliding)
+        if (playerSword.hits.Length > 0 && attacking)
         {
-            attackColliding = true;
-            OnAttackCollisionEnter(playerSword.hits);
-        } else if (playerSword.hits.Length == 0)
-        {
-            attackColliding = false;
-            OnAttackCollisionExit();
+            OnAttackCollision(playerSword.hits);
         }
     }
 
-    void OnAttackCollisionEnter(Collider[] enemies)
+    void OnAttackCollision(Collider[] enemies)
     {
-        if (attacking)
+        for (int i = 0; i < enemies.Length; i += 1)
         {
-            for (int i = 0; i < enemies.Length; i += 1)
-            {
+            if (!damagedEnemies.Contains(enemies[i])) {
                 enemies[i].GetComponent<Skeleton>().ApplyDamage(20f);
                 Debug.Log(enemies[i].name + " receives 20 damage");
+                damagedEnemies.Add(enemies[i]);
             }
         }
-    }
-
-    void OnAttackCollisionExit() {
     }
 
     void OnAttackAnimStart()
@@ -249,6 +250,7 @@ public class Player : MonoBehaviour
         attacking = true;
         Animator animator = arms.GetComponent<Animator>();
         animator.SetBool("attacking", true);
+        damagedEnemies = new HashSet<Collider>();
     }
 
     public void OnAttackAnimEnd()
