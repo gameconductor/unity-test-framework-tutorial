@@ -1,4 +1,4 @@
 Unity Test Framework Tutorial
 =============================
 
-This repository is the basis for a Unity Test Framework tutorial written for [Game Conductor](https://gameconductor.net).
+This repository is the basis for a tutorial written for Game Conductor: [Unity Test Framework Tutorial](https://gameconductor.net/blog/unity-test-framework-tutorial.html).
