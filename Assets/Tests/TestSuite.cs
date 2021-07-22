@@ -19,6 +19,8 @@ namespace Tests
         {
             base.Setup();
             SceneManager.LoadScene("Scenes/Sandbox");
+            // We disable the first person camera to better see what is
+            // happening during the tests.
             playerPrefab.GetComponent<Player>().activeCam = false;
 
             mouse = InputSystem.AddDevice<Mouse>();
