@@ -12,7 +12,6 @@ public class Skeleton : MonoBehaviour
     public Transform groundCheck;
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
-    // public float jumpHeight = 3;
     public float attackDistance = 2.0f;
     public Transform hpBar;
     public OldSword oldSword;
@@ -34,8 +33,7 @@ public class Skeleton : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
-        // health = Random.Range(.0f, 1.0f) * 100f;
-        // speed  = speed * Random.Range(0.5f, 1.0f);
+        speed  = speed * Random.Range(0.5f, 1.0f);
     }
 
     public void Update()
@@ -110,6 +108,7 @@ public class Skeleton : MonoBehaviour
         velocity.y += (mass * 0.01f) * gravity;
         controller.Move(velocity * Time.deltaTime);
     }
+    
     Quaternion ClampRotation(Quaternion rotation, float range) {
         Vector3 rot = rotation.eulerAngles;
         rot.x = 0f;

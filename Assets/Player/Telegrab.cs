@@ -14,13 +14,6 @@ public class Telegrab : MonoBehaviour
     RaycastHit hit;
     bool grabbing = false;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
         if (state == "detect")
@@ -36,17 +29,6 @@ public class Telegrab : MonoBehaviour
             ThrowObject();
             Animator animator = arms.GetComponent<Animator>();
             animator.SetBool("telegrab", false);
-        }
-    }
-
-
-    void OnDrawGizmos()
-    {
-        if (grabbing)
-        {
-            Vector2 mousePosition = Mouse.current.position.ReadValue();
-            Gizmos.color = Color.red;
-            Gizmos.DrawLine(cam.transform.position, hit.transform.position);
         }
     }
 
@@ -121,7 +103,6 @@ public class Telegrab : MonoBehaviour
         grabbing = false;
         hit = new RaycastHit();
         state = "idle";
-        // hit = null;
     }
 
     public void Throw()

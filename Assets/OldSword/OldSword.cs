@@ -21,15 +21,4 @@ public class OldSword : MonoBehaviour
     {
         hit = Physics.CheckBox(hitCenter.position, new Vector3(0.2175f, 0.082f, 0.805f), transform.rotation, hitMask);
     }
-
-    void OnDrawGizmos()
-    {
-        return;
-        bool hit = Physics.CheckBox(hitCenter.position, new Vector3(0.2175f, 0.082f, 0.805f), transform.rotation, hitMask);
-        if (hit)
-        {
-            Gizmos.color = Color.red;
-            Gizmos.DrawWireCube(hitCenter.position, new Vector3(0.2175f, 0.082f, 0.805f));
-        }
-    }
 }
