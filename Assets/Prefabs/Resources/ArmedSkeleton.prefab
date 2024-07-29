@@ -526,7 +526,7 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 6b9f2a6b8f1930806972bc1cb3587c2f,
         type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: -908838942085588878, guid: 6b9f2a6b8f1930806972bc1cb3587c2f,
         type: 3}
@@ -875,7 +875,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1cafd7844dc2744abd3a76d8576437e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idle: 1
+  idle: 0
   player: {fileID: 0}
   controller: {fileID: 1417689833}
   speed: 3
