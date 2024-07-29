@@ -305,11 +305,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Skeleton (2)
       objectReference: {fileID: 0}
-    - target: {fileID: 3994664345413893340, guid: 95e3e7701fdf7cb89badc22c4d03a9af,
-        type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
     - target: {fileID: 4738086812702998824, guid: 95e3e7701fdf7cb89badc22c4d03a9af,
         type: 3}
       propertyPath: player
@@ -502,11 +497,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Skeleton (6)
-      objectReference: {fileID: 0}
-    - target: {fileID: 3994664345413893340, guid: 95e3e7701fdf7cb89badc22c4d03a9af,
-        type: 3}
-      propertyPath: m_Layer
-      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4738086812702998824, guid: 95e3e7701fdf7cb89badc22c4d03a9af,
         type: 3}
@@ -992,11 +982,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Skeleton (8)
       objectReference: {fileID: 0}
-    - target: {fileID: 3994664345413893340, guid: 95e3e7701fdf7cb89badc22c4d03a9af,
-        type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
     - target: {fileID: 4738086812702998824, guid: 95e3e7701fdf7cb89badc22c4d03a9af,
         type: 3}
       propertyPath: player
@@ -1191,11 +1176,6 @@ PrefabInstance:
       propertyPath: shockwave
       value: 
       objectReference: {fileID: 1797957961}
-    - target: {fileID: 1831875676662572624, guid: 4068e976321c79156864ed07c4af96e3,
-        type: 3}
-      propertyPath: playerSword
-      value: 
-      objectReference: {fileID: 1147537524}
     - target: {fileID: 1864658267611849250, guid: 4068e976321c79156864ed07c4af96e3,
         type: 3}
       propertyPath: player
@@ -1871,11 +1851,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Skeleton (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 3994664345413893340, guid: 95e3e7701fdf7cb89badc22c4d03a9af,
-        type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
     - target: {fileID: 4738086812702998824, guid: 95e3e7701fdf7cb89badc22c4d03a9af,
         type: 3}
       propertyPath: player
@@ -2062,11 +2037,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Skeleton (4)
-      objectReference: {fileID: 0}
-    - target: {fileID: 3994664345413893340, guid: 95e3e7701fdf7cb89badc22c4d03a9af,
-        type: 3}
-      propertyPath: m_Layer
-      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4738086812702998824, guid: 95e3e7701fdf7cb89badc22c4d03a9af,
         type: 3}
@@ -2374,18 +2344,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &1147537524 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2902086215417425783, guid: 4068e976321c79156864ed07c4af96e3,
-    type: 3}
-  m_PrefabInstance: {fileID: 611911627}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96768208e4e964e0ab6d1b710218dc5a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1366933836
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2569,11 +2527,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Skeleton (5)
       objectReference: {fileID: 0}
-    - target: {fileID: 3994664345413893340, guid: 95e3e7701fdf7cb89badc22c4d03a9af,
-        type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
     - target: {fileID: 4738086812702998824, guid: 95e3e7701fdf7cb89badc22c4d03a9af,
         type: 3}
       propertyPath: player
@@ -2730,11 +2683,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Skeleton (7)
-      objectReference: {fileID: 0}
-    - target: {fileID: 3994664345413893340, guid: 95e3e7701fdf7cb89badc22c4d03a9af,
-        type: 3}
-      propertyPath: m_Layer
-      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4738086812702998824, guid: 95e3e7701fdf7cb89badc22c4d03a9af,
         type: 3}
@@ -3402,11 +3350,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Skeleton (3)
       objectReference: {fileID: 0}
-    - target: {fileID: 3994664345413893340, guid: 95e3e7701fdf7cb89badc22c4d03a9af,
-        type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
     - target: {fileID: 4738086812702998824, guid: 95e3e7701fdf7cb89badc22c4d03a9af,
         type: 3}
       propertyPath: player
@@ -3601,11 +3544,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Skeleton (9)
       objectReference: {fileID: 0}
-    - target: {fileID: 3994664345413893340, guid: 95e3e7701fdf7cb89badc22c4d03a9af,
-        type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
     - target: {fileID: 4738086812702998824, guid: 95e3e7701fdf7cb89badc22c4d03a9af,
         type: 3}
       propertyPath: player
@@ -3624,8 +3562,8 @@ SceneRoots:
   - {fileID: 1033724022}
   - {fileID: 1699588368}
   - {fileID: 1560222040}
-  - {fileID: 737663559}
   - {fileID: 1639645805}
+  - {fileID: 737663559}
   - {fileID: 68170913}
   - {fileID: 1763038752}
   - {fileID: 942060240}
