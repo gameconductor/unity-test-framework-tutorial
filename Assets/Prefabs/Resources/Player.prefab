@@ -505,7 +505,7 @@ MonoBehaviour:
   arms: {fileID: 7692559134354636112}
   playerSword: {fileID: 7589648891737522768}
   shockwave: {fileID: 1892645410257200868}
-  health: 100
+  health: 99
   activeCam: 1
 --- !u!114 &9093791277163202251
 MonoBehaviour:
