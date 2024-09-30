@@ -9,7 +9,6 @@ public class Player : MonoBehaviour
 {
     public event Action<float> OnHPChanged;
 
-
     public CharacterController controller;
     public float speed = 1f;
     public float gravity = -9.81f;
@@ -80,11 +79,7 @@ public class Player : MonoBehaviour
             dead = true;
             animator.enabled = true;
             arms.SetActive(false);
-            // animator.SetBool("dead", true); //
         }
-
-        // InputAction secondaryAttack = playerInput.FindActionMap("Player").FindAction("SecondaryAttack");
-        // Debug.Log(secondaryAttack.phase);
     }
 
     void Movement()
@@ -105,20 +100,12 @@ public class Player : MonoBehaviour
         Vector3 movement = transform.right * direction.x + transform.forward * direction.y;
         controller.Move(movement * (speed * 0.1f) * GetDeltaFactor(Time.deltaTime));
 
-        // if (Input.GetButtonDown("Jump") && isGrounded)
-        // {
-        //     velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
-        // }
-
         velocity.y += mass * 0.03f * gravity * GetDeltaFactor(Time.deltaTime);
         controller.Move(velocity * Time.deltaTime);
     }
 
     void PlayerInput() {
-        // InputAction look = playerInput.FindActionMap("Player").FindAction("Look");
-        // float lookDelta = look.ReadValue<float>();
         Vector2 lookDelta = Mouse.current.delta.ReadValue();
-        // Debug.Log(lookDelta);
         MouseLook(lookDelta.x, lookDelta.y);
 
         InputAction primaryAction   = playerInput.FindActionMap("Player").FindAction("PrimaryAttack");
@@ -136,7 +123,6 @@ public class Player : MonoBehaviour
         if (primaryAttack) {
             if (secondaryAttack) { // if true, we're using telekinesis
                 Animator animator = arms.GetComponent<Animator>();        
-                // animator.SetBool("telegrab", false);
                 animator.SetBool("telegrabAttack", true);
             } else { // else it's a sword attack
                 OnAttackAnimStart();
@@ -167,50 +153,6 @@ public class Player : MonoBehaviour
         }
     }
 
-    // void PlayerInput() {
-        // if (Input.GetKeyDown("r"))
-        // {
-        //     SceneManager.LoadScene("Assets/Scenes/Sandbox.unity");
-        // }
-
-        // if (dead)
-        // {
-        //     return;
-        // }
-
-        // float mouseX = Input.GetAxis("Mouse X");
-        // float mouseY = Input.GetAxis("Mouse Y");
-        // MouseLook(mouseX, mouseY);
-
-        // if (Input.GetMouseButtonDown(0)) // left click
-        // {
-        //     if (Input.GetMouseButton(1)) // if true, we're using telekinesis
-        //     {
-        //         Animator animator = arms.GetComponent<Animator>();        
-        //         // animator.SetBool("telegrab", false);
-        //         animator.SetBool("telegrabAttack", true);
-        //     } else { // else it's a sword attack
-        //         OnAttackAnimStart();
-        //     }
-
-        // }
-
-        // if (Input.GetMouseButton(2)) // middle button
-        // {
-        //     OnShockwaveAnimStart();
-        // } else {
-        //     OnShockwaveAnimStop();
-        // }
-
-        // if (Input.GetMouseButton(1)) // right click
-        // {
-        //     GetComponent<Telegrab>().Grab();
-
-        // } else {
-        //     GetComponent<Telegrab>().Stop();
-        // }
-    // }
-
     void MouseLook(float x, float y) {
         return;
         float deltaFactor = GetDeltaFactor(Time.deltaTime);
@@ -219,10 +161,7 @@ public class Player : MonoBehaviour
 
         xRotation -= mouseY;
         xRotation = Mathf.Clamp(xRotation, -70, 70f);
-        // Debug.Log(xRotation);
         cam.transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
-        // float rotY = transform.localEulerAngles.y;
-        // transform.localEulerAngles = new Vector3(0f, rotY + mouseX, 0f);
         transform.Rotate(Vector3.up * mouseX);
     }
 
@@ -283,78 +222,4 @@ public class Player : MonoBehaviour
         health -= damage;
         OnHPChanged?.Invoke(-damage);
     }
-
-    // public void OnPrimaryAttack()
-    // {
-    //     // if (dead)
-    //     //     return false;
-
-    //     // Debug.Log(context.action);
-
-    //     InputAction primaryAttack = playerInput.FindActionMap("Player").FindAction("PrimaryAttack");
-    //     InputAction secondaryAttack = playerInput.FindActionMap("Player").FindAction("SecondaryAttack");
-
-    //     if (secondaryAttack.phase == InputActionPhase.Started) {
-    //         Debug.Log("throw");
-    //         Animator animator = arms.GetComponent<Animator>();        
-    //         // animator.SetBool("telegrab", false);
-    //         animator.SetBool("telegrabAttack", true);
-    //     } else {
-    //         Debug.Log("slash");
-    //         OnAttackAnimStart();
-    //     }
-    //     // if (grabbing) // XXX Idealy we would like to avoid using an extra boolean here, and check other Action instead.
-    //     // {
-    //     //     Debug.Log("throw");
-    //     //     Animator animator = arms.GetComponent<Animator>();        
-    //     //     // animator.SetBool("telegrab", false);
-    //     //     animator.SetBool("telegrabAttack", true);
-
-    //     //     grabbing = false;
-    //     // } else {
-    //     //     Debug.Log("slash");
-    //     //     OnAttackAnimStart();
-    //     // }
-    // }
-
-    // public void OnSecondaryAttack(InputValue value)
-    // {
-    //     // Debug.Log("Secondary Attack");
-    //     // Debug.Log(value);
-
-    //     InputAction secondaryAttack = playerInput.FindActionMap("Player").FindAction("SecondaryAttack");
-    //     // Debug.Log(secondaryAttack.phase);
-
-    //     if (secondaryAttack.phase == InputActionPhase.Started) {
-    //         GetComponent<Telegrab>().Grab();
-    //     } else {
-    //         GetComponent<Telegrab>().Stop();
-    //     }
-    // }
-
-    //         // if (Input.GetMouseButton(2)) // middle button
-    //     // {
-    //     //     OnShockwaveAnimStart();
-    //     // } else {
-    //     //     OnShockwaveAnimStop();
-    //     // }
-
-    //     // if (Input.GetMouseButton(1)) // right click
-    //     // {
-    //     //     GetComponent<Telegrab>().Grab();
-
-    //     // } else {
-    //     //     GetComponent<Telegrab>().Stop();
-    //     // }
-
-    // public void OnTertiaryAttack()
-    // {
-    // }
-
-    // private void OnMove(InputValue value)
-    // {
-    //     Debug.Log("OnMovement");
-    //     Vector2 inputMovement = value.Get<Vector2>();
-    //     Debug.Log(inputMovement);
-    // }
 }

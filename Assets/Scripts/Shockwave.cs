@@ -9,13 +9,11 @@ public class Shockwave : MonoBehaviour
     private float size = 1f;
     private bool blasting = false;
 
-    // Start is called before the first frame update
     void Start()
     {
         size = transform.localScale.x;
     }
 
-    // Update is called once per frame
     void Update()
     {
         size = transform.localScale.x;
