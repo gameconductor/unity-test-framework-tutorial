@@ -9,7 +9,6 @@ public class Player : MonoBehaviour
 {
     public event Action<float> OnHPChanged;
 
-    // public InputAction slashAction;
 
     public CharacterController controller;
     public float speed = 1f;
@@ -18,7 +17,7 @@ public class Player : MonoBehaviour
     public Transform groundCheck;
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
-    public float jumpHeight = 3;
+    public float jumpHeight = 10;
     public Camera cam;
     public float mouseSensitivity = 20f;
     public bool dead = false;
@@ -111,7 +110,7 @@ public class Player : MonoBehaviour
         //     velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         // }
 
-        velocity.y += (mass * 0.01f) * gravity;
+        velocity.y += mass * 0.03f * gravity * GetDeltaFactor(Time.deltaTime);
         controller.Move(velocity * Time.deltaTime);
     }
 
@@ -129,7 +128,7 @@ public class Player : MonoBehaviour
         InputAction resetAction     = playerInput.FindActionMap("Player").FindAction("Reset");
 
         bool primaryAttack   = primaryAction.WasPerformedThisFrame();
-        bool secondaryAttack = secondaryAction.phase == InputActionPhase.Started;
+        bool secondaryAttack = secondaryAction.phase == InputActionPhase.Performed;
         bool tertiaryAttack  = tertiaryAction.phase == InputActionPhase.Performed;
         bool jump            = jumpAction.WasPerformedThisFrame();
         bool reset           = resetAction.WasPerformedThisFrame();
@@ -145,7 +144,6 @@ public class Player : MonoBehaviour
         }
 
         if (secondaryAttack) {
-            Debug.Log("Grab");
             GetComponent<Telegrab>().Grab();
         } else {
             GetComponent<Telegrab>().Stop();
@@ -160,7 +158,7 @@ public class Player : MonoBehaviour
 
         if (jump && isGrounded)
         {
-            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            velocity.y = jumpHeight;
         }
 
         if (reset)

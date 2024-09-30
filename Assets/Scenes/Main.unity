@@ -1176,6 +1176,11 @@ PrefabInstance:
       propertyPath: shockwave
       value: 
       objectReference: {fileID: 1797957961}
+    - target: {fileID: 1831875676662572624, guid: 4068e976321c79156864ed07c4af96e3,
+        type: 3}
+      propertyPath: groundMask.m_Bits
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1864658267611849250, guid: 4068e976321c79156864ed07c4af96e3,
         type: 3}
       propertyPath: player

@@ -492,12 +492,12 @@ MonoBehaviour:
   controller: {fileID: 1864658268176013000}
   speed: 5
   gravity: -9.81
-  mass: 7
+  mass: 5
   groundCheck: {fileID: 1864658268016263897}
   groundDistance: 0.45
   groundMask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 512
   jumpHeight: 10
   cam: {fileID: 1864658267637621682}
   mouseSensitivity: 2

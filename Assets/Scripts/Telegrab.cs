@@ -50,6 +50,11 @@ public class Telegrab : MonoBehaviour
         }
     }
 
+    float GetDeltaFactor(float delta)
+    {
+        return delta / (1/16f);
+    }
+
     void DetectObject()
     {
         Vector3 origin = cam.transform.position + (cam.transform.forward * cam.nearClipPlane);
@@ -71,7 +76,7 @@ public class Telegrab : MonoBehaviour
 
         if (direction.magnitude > 1f)
         {
-            objectHit.GetComponent<Rigidbody>().AddTorque(new Vector3(1f, 1f, 1f));
+            objectHit.GetComponent<Rigidbody>().AddTorque(new Vector3(0.1f, 0.1f, 0.1f) * GetDeltaFactor(Time.deltaTime));
             // objectHit.GetComponent<Rigidbody>().AddForce(direction.normalized * 50f);
             objectHit.GetComponent<Rigidbody>().velocity = direction.normalized * (direction.magnitude + 2f) * 2f;
             animator.SetBool("telegrab", true);
