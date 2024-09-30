@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
 
@@ -46,7 +47,8 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-        OnHPChanged += OnHPTest;
+        OnHPChanged += UpdateHPBar
+;
         animator = GetComponent<Animator>();
         if (Application.platform != RuntimePlatform.LinuxEditor &&
             Application.platform != RuntimePlatform.LinuxPlayer) {
@@ -64,8 +66,13 @@ public class Player : MonoBehaviour
         arms.GetComponent<Arms>().SetPlayer(this);
     }
 
-    void OnHPTest(float damage) {
-        Debug.Log("Damage: " + damage);
+    void UpdateHPBar(float damage)
+    {
+        health -= damage;
+
+        GameObject hpBar = GameObject.Find("/Canvas/HP").gameObject;
+        Slider slider = hpBar.GetComponent<Slider>();
+        slider.value = health;
     }
 
     void Update()
@@ -219,7 +226,6 @@ public class Player : MonoBehaviour
 
     public void applyDamage(float damage)
     {
-        health -= damage;
-        OnHPChanged?.Invoke(-damage);
+        OnHPChanged?.Invoke(damage);
     }
 }
